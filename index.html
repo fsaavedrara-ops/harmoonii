@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HARMOONII · dónde encontrarme</title>
+<meta name="description" content="Dónde encontrar a Harmoonii: Twitch, TikTok e Instagram.">
+<meta name="theme-color" content="#0C0D0F">
+<meta property="og:title" content="HARMOONII">
+<meta property="og:description" content="Dónde encontrarme: Twitch, TikTok e Instagram.">
+<meta property="og:image" content="https://fsaavedrara-ops.github.io/harmoonii/og.png">
+<meta property="og:url" content="https://fsaavedrara-ops.github.io/harmoonii/">
+<link rel="canonical" href="https://fsaavedrara-ops.github.io/harmoonii/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --volt: #D4FF3A; --negro: #0C0D0F; --tile: #17191D; --blanco: #F4F4F1; --gris: #80848C; --vivo: #FF4B3E;
+    --twitch: #9146FF; --twitch-osc: #6A2DD1;
+  }
+  * { box-sizing: border-box; }
+  html { background: var(--negro); }
+  body {
+    margin: 0; min-height: 100vh; color: var(--blanco); background: var(--negro);
+    font: 500 16px/1.4 'JetBrains Mono', ui-monospace, monospace;
+    /* grilla tenue de fondo, como el lobby */
+    background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+  main { width: 100%; max-width: 480px; margin: 0 auto; padding: 40px 16px 32px; }
+
+  /* Cabecera */
+  .cabeza { text-align: center; }
+  .foto { position: relative; width: 132px; height: 132px; margin: 0 auto 22px; }
+  .foto img { width: 100%; height: 100%; object-fit: cover; border-radius: 22px; border: 4px solid var(--volt); display: block; }
+  .envivo { position: absolute; left: 50%; bottom: -12px; transform: translateX(-50%); white-space: nowrap;
+            background: var(--vivo); color: #fff; font: 700 12px 'JetBrains Mono', monospace; letter-spacing: .12em;
+            padding: 5px 10px; border-radius: 6px; display: none; align-items: center; gap: 7px; }
+  .envivo i { width: 8px; height: 8px; border-radius: 50%; background: #fff; animation: latido 1.2s ease-in-out infinite; }
+  body.en-vivo .envivo { display: inline-flex; }
+
+  /* Tablero: HARMOONII en celdas que se barajan al cargar */
+  .tiles { display: flex; justify-content: center; gap: 4px; margin: 0 auto; }
+  .tile { position: relative; width: clamp(28px, 8.4vw, 40px); aspect-ratio: 40 / 58; background: var(--tile); border-radius: 5px;
+          display: grid; place-items: center; font: clamp(30px, 8.6vw, 44px)/1 'Anton', sans-serif; color: var(--blanco); overflow: hidden; }
+  .tile::after { content: ''; position: absolute; left: 0; right: 0; top: 50%; height: 2px; background: var(--negro); }
+
+  /* Botones */
+  .links { display: grid; gap: 14px; margin-top: 34px; }
+  .boton { display: flex; align-items: center; gap: 16px; padding: 16px 18px; border-radius: 14px; text-decoration: none; color: var(--blanco);
+           background: var(--tile); border-left: 8px solid var(--volt); transition: transform .15s ease, filter .15s ease;
+           -webkit-tap-highlight-color: transparent; }
+  .boton:hover, .boton:focus-visible { transform: translateY(-2px); filter: brightness(1.12); }
+  .boton:active { transform: scale(.98); }
+  .boton:focus-visible { outline: 3px solid var(--blanco); outline-offset: 3px; }
+  .boton svg { width: 34px; height: 34px; fill: var(--volt); flex: none; }
+  .boton .txt { display: grid; min-width: 0; }
+  .boton .red { font: 30px/1 'Anton', sans-serif; letter-spacing: .5px; text-transform: uppercase; }
+  .boton .user { color: var(--gris); font-size: 14px; margin-top: 4px; overflow-wrap: anywhere; }
+  .boton .flecha { margin-left: auto; font: 26px/1 'Anton', sans-serif; color: var(--gris); }
+
+  .boton.twitch { background: var(--twitch); border-left-color: var(--blanco); box-shadow: 0 10px 30px rgba(145,70,255,.35); }
+  .boton.twitch svg { fill: #fff; }
+  .boton.twitch .user, .boton.twitch .flecha { color: rgba(255,255,255,.82); }
+  .boton.twitch .vivo-txt { display: none; color: #fff; font-weight: 700; }
+  body.en-vivo .boton.twitch .vivo-txt { display: inline; }
+  body.en-vivo .boton.twitch .off-txt { display: none; }
+
+  footer { margin-top: 36px; text-align: center; color: var(--gris); font-size: 12px; letter-spacing: .14em; }
+
+  @keyframes latido { 50% { opacity: .35; } }
+  @media (prefers-reduced-motion: reduce) { .envivo i { animation: none; } .boton { transition: none; } }
+</style>
+</head>
+<body>
+<main>
+  <header class="cabeza">
+    <div class="foto">
+      <img src="foto.jpg" alt="Harmoonii" width="132" height="132">
+      <span class="envivo" aria-live="polite"><i></i>EN VIVO AHORA</span>
+    </div>
+    <h1 class="tiles" aria-label="HARMOONII" id="nombre"></h1>
+  </header>
+
+  <nav class="links" aria-label="Mis redes">
+    <a class="boton twitch" href="https://www.twitch.tv/harmoonii" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z"/></svg>
+      <span class="txt"><span class="red">Twitch</span><span class="user"><span class="off-txt">twitch.tv/harmoonii</span><span class="vivo-txt">● En vivo ahora · entra</span></span></span>
+      <span class="flecha">→</span>
+    </a>
+    <a class="boton" href="https://www.tiktok.com/@harmoonii.gg" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+      <span class="txt"><span class="red">TikTok</span><span class="user">@harmoonii.gg · clips</span></span>
+      <span class="flecha">→</span>
+    </a>
+    <a class="boton" href="https://www.instagram.com/fernandoo_saavedra/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M7 1.5h10A5.5 5.5 0 0 1 22.5 7v10a5.5 5.5 0 0 1-5.5 5.5H7A5.5 5.5 0 0 1 1.5 17V7A5.5 5.5 0 0 1 7 1.5zm0 2.2A3.3 3.3 0 0 0 3.7 7v10A3.3 3.3 0 0 0 7 20.3h10a3.3 3.3 0 0 0 3.3-3.3V7A3.3 3.3 0 0 0 17 3.7zM12 6.8a5.2 5.2 0 1 1 0 10.4 5.2 5.2 0 0 1 0-10.4zm0 2.2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/><circle cx="17.6" cy="6.4" r="1.3"/></svg>
+      <span class="txt"><span class="red">Instagram</span><span class="user">@fernandoo_saavedra · reels y día a día</span></span>
+      <span class="flecha">→</span>
+    </a>
+  </nav>
+
+  <footer>HARMOONII · 2026</footer>
+</main>
+
+<script>
+  // HARMOONII en tablero: cada letra baraja un momento y se queda quieta
+  const NOMBRE = 'HARMOONII', ABC = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  const caja = document.getElementById('nombre');
+  const celdas = [...NOMBRE].map(c => { const d = document.createElement('span'); d.className = 'tile'; d.textContent = c; caja.appendChild(d); return d; });
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const t0 = performance.now();
+    const paso = () => {
+      const t = (performance.now() - t0) / 1000;
+      let quedan = false;
+      celdas.forEach((d, i) => {
+        if (t < 0.25 + i * 0.08) { d.textContent = ABC[Math.floor(Math.random() * ABC.length)]; quedan = true; }
+        else d.textContent = NOMBRE[i];
+      });
+      if (quedan) setTimeout(() => requestAnimationFrame(paso), 45);
+    };
+    paso();
+  }
+
+  // ¿Está en vivo? DecAPI responde el tiempo en vivo, o OFFLINE
+  fetch('https://decapi.me/twitch/uptime/harmoonii?offline_msg=OFFLINE', { cache: 'no-store' })
+    .then(r => r.ok ? r.text() : 'OFFLINE')
+    .then(t => { if (t.trim() && !/offline|error|not found/i.test(t)) document.body.classList.add('en-vivo'); })
+    .catch(() => {});
+</script>
+</body>
+</html>
